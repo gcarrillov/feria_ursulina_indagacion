@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Atención y Doomscroll</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- CABECERA -->
+    <header>
+        <h1>Atención y Uso de Pantallas</h1>
+
+        <p>
+            Este proyecto busca investigar la relación entre el uso de
+            dispositivos electrónicos y la capacidad de atención en niños
+            y adolescentes.
+        </p>
+    </header>
+
+    <!-- ENCUESTA -->
+    <section id="encuesta">
+
+        <h2>Encuesta</h2>
+
+        <label>Rango de edad:</label>
+        <select id="edad">
+            <option value="">Seleccione</option>
+            <option>6-8 años</option>
+            <option>9-11 años</option>
+            <option>12-14 años</option>
+            <option>15-17 años</option>
+        </select>
+
+        <br><br>
+
+        <label>¿Cuántas horas al día utilizas pantallas?</label>
+        <select id="horas">
+            <option value="">Seleccione</option>
+            <option>Menos de 1 hora</option>
+            <option>1-2 horas</option>
+            <option>3-4 horas</option>
+            <option>5 horas o más</option>
+        </select>
+
+        <br><br>
+
+        <label>¿Qué dispositivo utilizas más?</label>
+        <select id="dispositivo">
+            <option value="">Seleccione</option>
+            <option>Celular</option>
+            <option>Tablet</option>
+            <option>Computadora</option>
+            <option>Televisión</option>
+        </select>
+
+        <br><br>
+
+        <label>¿Qué aplicación utilizas más?</label>
+        <select id="app">
+            <option value="">Seleccione</option>
+            <option>TikTok</option>
+            <option>YouTube</option>
+            <option>Videojuegos</option>
+            <option>WhatsApp</option>
+            <option>Otra</option>
+        </select>
+
+        <br><br>
+
+        <label>
+            ¿Sueles seguir viendo videos sin darte cuenta del tiempo?
+        </label>
+
+        <select id="doomscroll">
+            <option value="">Seleccione</option>
+            <option>Nunca</option>
+            <option>A veces</option>
+            <option>Frecuentemente</option>
+            <option>Siempre</option>
+        </select>
+
+    </section>
+
+    <hr>
+
+    <!-- VIDEO -->
+    <section id="video">
+
+        <h1>Video de Atención</h1>
+        <h2 id="mensajeVideo">
+            ⚠️ Es necesario ver el video completo para poder responder las preguntas y enviar la encuesta
+        </h2>
+
+        <video id="videoAtencion" width="100%" controls>
+            <source src="/asssets/video_atencion.mp4" type="video/mp4">
+        </video>
+
+    </section>
+
+    <hr>
+
+    <!-- TEST -->
+    <section id="test" style="display:none;"></section>
+
+        <h2>Preguntas del Video</h2>
+
+        <label>
+            ¿Cuántas veces apareció la estrella?
+        </label>
+
+        <select id="estrella">
+            <option value="">Seleccione</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+
+        <br><br>
+
+        <label>
+            ¿Qué animal apareció?
+        </label>
+
+        <select id="animal">
+            <option value="">Seleccione</option>
+            <option>Perro</option>
+            <option>Caballo</option>
+            <option>Gato</option>
+            <option>Pájaro</option>
+        </select>
+
+        <br><br>
+
+        <label>
+            ¿De qué color era el cuadrado?
+        </label>
+
+        <select id="color">
+            <option value="">Seleccione</option>
+            <option>Rojo</option>
+            <option>Verde</option>
+            <option>Azul</option>
+            <option>Amarillo</option>
+        </select>
+
+        <br><br>
+
+        <label>
+            ¿Qué tan difícil fue mantener tu atención?
+        </label>
+
+        <select id="dificultad">
+            <option value="">Seleccione</option>
+            <option>Muy fácil</option>
+            <option>Fácil</option>
+            <option>Normal</option>
+            <option>Difícil</option>
+            <option>Muy difícil</option>
+        </select>
+
+    </section>
+
+    <hr>
+
+    <!-- BOTON -->
+    <section>
+
+        <button id="btnEnviar" disabled>
+            Enviar Respuestas
+        </button>
+
+    </section>
+
+    <hr>
+
+    <!-- RESULTADO -->
+    <section id="resultado">
+
+        <h2>Resultado</h2>
+
+        <p id="puntajeTexto">
+            Tu puntaje aparecerá aquí.
+        </p>
+
+    </section>
+
+    <hr>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard">
+
+    <h2>Estadísticas Generales</h2>
+
+    <div id="estadisticas"></div>
+
+    <br>
+
+    <canvas id="graficoHoras"></canvas>
+
+    <br><br>
+
+    <canvas id="graficoDispositivos"></canvas>
+
+    <br><br>
+
+    <canvas id="graficoApps"></canvas>
+
+    <br><br>
+
+    <canvas id="graficoEdad"></canvas>
+
+</section>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script type="module" src="script.js"></script>
+
+</body>
+
+</html>
