@@ -5,28 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Atención y Doomscroll</title>
+    <title>proyecto de atención</title>
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/efectos.css">
 </head>
 
 <body>
+    <canvas id="particles"></canvas>
 
     <!-- CABECERA -->
-    <header>
-        <h1>Atención y Uso de Pantallas</h1>
+     <header>
 
-        <p>
-            Este proyecto busca investigar la relación entre el uso de
-            dispositivos electrónicos y la capacidad de atención en niños
-            y adolescentes.
-        </p>
-    </header>
+    <h1 class="tituloAnimado">
+
+        <span>🧠</span>
+        <span>D</span>
+        <span>E</span>
+        <span>S</span>
+        <span>A</span>
+        <span>F</span>
+        <span>Í</span>
+        <span>O</span>
+
+    </h1>
+
+    <h2 class="subtituloAnimado">
+
+        DE ATENCIÓN
+
+    </h2>
+
+    <p class="introTexto">
+
+        ¿Usas celular, tablet o computadora todos los días?
+
+        <br><br>
+
+        Queremos descubrir si el tiempo frente a las pantallas puede influir en la atención y la memoria.
+
+        <br><br>
+
+        Mira un video corto, responde algunas preguntas y ayuda a nuestra investigación.
+
+    </p>
+
+</header>
 
     <!-- ENCUESTA -->
     <section id="encuesta">
 
-        <h2>Encuesta</h2>
+        <center><h2>Encuesta</h2></center>
 
         <label>Rango de edad:</label>
         <select id="edad">
@@ -92,10 +121,10 @@
     <!-- VIDEO -->
     <section id="video">
 
-        <h1>Video de Atención</h1>
+        <center><h1>Video de Atención</h1>
         <h2 id="mensajeVideo">
             ⚠️ Es necesario ver el video completo para poder responder las preguntas y enviar la encuesta
-        </h2>
+        </h2></center>
 
         <video id="videoAtencion" width="100%" controls>
             <source src="video.mp4" type="video/mp4">
@@ -106,7 +135,7 @@
     <hr>
 
     <!-- TEST -->
-    <section id="test" style="display:none;"></section>
+    <section id="test" style="display:none;">
 
         <h2>Preguntas del Video</h2>
 
@@ -185,9 +214,22 @@
 
         <h2>Resultado</h2>
 
-        <p id="puntajeTexto">
-            Tu puntaje aparecerá aquí.
-        </p>
+        <p id="puntajeTexto"></p>
+
+        <div id="resultadoAtencion">
+
+            <h3 id="nivelAtencion"></h3>
+
+            <div class="barra">
+
+                <div
+                    id="barraAtencion"
+                    class="progreso">
+                </div>
+
+            </div>
+
+        </div>
 
     </section>
 
@@ -196,32 +238,39 @@
     <!-- DASHBOARD -->
     <section id="dashboard">
 
-    <h2>Estadísticas Generales</h2>
+    <center><h2>Estadísticas Generales</h2></center>
 
     <div id="estadisticas"></div>
 
     <br>
+    <div class="graficos-grid">
 
-    <canvas id="graficoHoras"></canvas>
+    <div class="grafico-card">
+        <canvas id="graficoHoras"></canvas>
+    </div>
 
-    <br><br>
+    <div class="grafico-card">
+        <canvas id="graficoDispositivos"></canvas>
+    </div>
 
-    <canvas id="graficoDispositivos"></canvas>
+    <div class="grafico-card">
+        <canvas id="graficoApps"></canvas>
+    </div>
 
-    <br><br>
+    <div class="grafico-card">
+        <canvas id="graficoEdad"></canvas>
+    </div>
 
-    <canvas id="graficoApps"></canvas>
-
-    <br><br>
-
-    <canvas id="graficoEdad"></canvas>
+</div>
 
 </section>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script type="module" src="script.js"></script>
+    <script src="js/efectos.js"></script>
 
 </body>
+
 
 </html>

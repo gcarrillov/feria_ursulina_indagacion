@@ -8,6 +8,7 @@ let chartHoras = null;
 let chartDispositivos = null;
 let chartApps = null;
 let chartEdad = null;
+let promedioGlobal = 0;
 
 /* ==========================
 CALCULAR PUNTAJE
@@ -99,6 +100,9 @@ async function guardarRespuesta() {
             .getElementById("puntajeTexto")
             .textContent =
             `Tu puntaje fue: ${puntaje}/100`;
+            mostrarResultado(
+              puntaje
+            );
 
         alert(
             "Respuestas guardadas correctamente"
@@ -216,6 +220,7 @@ async function actualizarDashboard() {
             total > 0
             ? (sumaPuntajes / total).toFixed(1)
             : 0;
+            promedioGlobal = Number(promedio);
 
         const dispositivoMasUsado =
             Object.keys(dispositivos)
@@ -234,15 +239,15 @@ async function actualizarDashboard() {
         document
         .getElementById("estadisticas")
         .innerHTML = `
-            <p><strong>Participantes: </strong> ${total}</p>
+            <p><strong>Participantes: </strong> ${total} </p>
 
-            <p><strong>Puntaje promedio: </strong> ${promedio}</p>
+            <p><strong> - Puntaje promedio: </strong> ${promedio} </p>
 
-            <p><strong>Dispositivo más usado: </strong>
-            ${dispositivoMasUsado}</p>
+            <p><strong>- Dispositivo más usado: </strong>
+            ${dispositivoMasUsado }</p>
 
-            <p><strong>Aplicación más usada: </strong>
-            ${appMasUsada}</p>
+            <p><strong> - Aplicación más usada: </strong>
+            ${appMasUsada } </p>
         `;
         crearGraficos(
             horas,
@@ -364,5 +369,127 @@ function crearGraficos(
     );
 
 }
+function mostrarResultado(puntaje){
+
+    const barra =
+        document.getElementById(
+            "barraAtencion"
+        );
+
+    const texto =
+        document.getElementById(
+            "nivelAtencion"
+        );
+
+    const contenedor =
+        document.getElementById(
+            "resultadoAtencion"
+        );
+
+    /* limpiar mensajes anteriores */
+
+    const anteriores =
+        contenedor.querySelectorAll(
+            ".extraResultado"
+        );
+
+    anteriores.forEach(
+        elemento => elemento.remove()
+    );
+
+    /* animar barra */
+
+    barra.style.width = "0%";
+
+    setTimeout(()=>{
+
+        barra.style.width =
+            puntaje + "%";
+
+    },300);
+
+    /* nivel */
+
+    if(puntaje >= 80){
+
+        texto.innerHTML =
+            "🟢 Excelente Atención";
+
+    }
+    else if(puntaje >= 50){
+
+        texto.innerHTML =
+            "🟡 Atención Regular";
+
+    }
+    else{
+
+        texto.innerHTML =
+            "🔴 Necesita Mejorar";
+
+    }
+
+    /* comparación */
+
+    const comparacion =
+        document.createElement("p");
+
+    comparacion.classList.add(
+        "extraResultado"
+    );
+
+    if(puntaje > promedioGlobal){
+
+        comparacion.innerHTML =
+            "🎉 Tu resultado está por encima del promedio.";
+
+    }
+    else{
+
+        comparacion.innerHTML =
+            "📈 Sigue practicando tu atención.";
+
+    }
+
+    contenedor.appendChild(
+        comparacion
+    );
+
+    /* curiosidad */
+
+    const dato =
+        curiosidades[
+            Math.floor(
+                Math.random() *
+                curiosidades.length
+            )
+        ];
+
+    const curiosidad =
+        document.createElement("p");
+
+    curiosidad.classList.add(
+        "extraResultado"
+    );
+
+    curiosidad.innerHTML =
+        `<strong>${dato}</strong>`;
+
+    contenedor.appendChild(
+        curiosidad
+    );
+
+}
+const curiosidades = [
+
+"🧠 El cerebro puede distraerse en menos de 10 segundos.",
+
+"📱 Mirar muchos videos cortos puede hacer más difícil concentrarse.",
+
+"💡 Dormir bien ayuda a prestar atención.",
+
+"📚 Leer fortalece la memoria y la concentración."
+
+];
 
 actualizarDashboard();
